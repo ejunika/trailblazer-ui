@@ -21,6 +21,12 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.user = {username: '', emailId: '', password: ''};
+    this.dataService.get('users', '', {
+      offset: 1,
+      limit: 100
+    }).subscribe((res) => {
+      debugger;
+    });
   }
 
   doLogin(): void {
