@@ -1,0 +1,67 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 offset-md-4 pt-5">
+      <div class="card mb-3 mt-5">
+        <div class="card-body">
+          <ul id="loginTabs" class="nav nav-tabs">
+            <li class="nav-item">
+              <a class="nav-link active" data-toggle="tab" href="#loginTab">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="tab" href="#signupTab">Sign Up</a>
+            </li>
+          </ul>
+          <div id="loginTabContents" class="tab-content mt-3">
+              <div class="tab-pane fade show active" id="loginTab">
+                <form>
+                  <div class="form-group">
+                    <label for="loginEmail">Email address</label>
+                    <input [(ngModel)]="user.emailId" name="loginEmail" type="email" class="form-control" id="loginEmail" aria-describedby="emailHelp" placeholder="Enter email" autocomplete="off">
+                  </div>
+                  <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input [(ngModel)]="user.password" 
+                      (keydown.enter)="doLogin()"
+                      name="loginPassword" 
+                      type="password" 
+                      class="form-control" 
+                      id="loginPassword" 
+                      placeholder="Password">
+                  </div>
+                  <button (click)="doLogin()" type="button" class="btn btn-primary">Login</button>
+                </form>
+              </div>
+              <div class="tab-pane fade" id="signupTab">
+                <form>
+                  <div class="form-group">
+                    <label for="signupEmail">Email address</label>
+                    <input [(ngModel)]="user.emailId" name="signupEmail" type="email" class="form-control" id="signupEmail" aria-describedby="emailHelp" placeholder="Enter email" autocomplete="off">
+                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                  </div>
+                  <div class="form-group">
+                    <label for="signupPassword">Password</label>
+                    <input [ngClass]="{'is-invalid': passwordDoesNotMatched}" [(ngModel)]="user.password" name="signupPassword" type="password" class="form-control" id="signupPassword" placeholder="Password">
+                    <div class="invalid-feedback">Sorry, Password didn't match!!</div>
+                  </div>
+                  <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input [ngClass]="{'is-invalid': passwordDoesNotMatched}" 
+                      [(ngModel)]="confirmPassword" 
+                      (keyup)="matchPassword($event)" 
+                      (keydown.enter)="signUp()"
+                      name="confirmPassword" 
+                      type="password" 
+                      class="form-control" 
+                      id="confirmPassword" 
+                      placeholder="Password" />
+                    <div class="invalid-feedback">Sorry, Password didn't match!!</div>
+                  </div>
+                  <button (click)="signUp()" type="button" class="btn btn-primary">Sign Up</button>
+                </form>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
