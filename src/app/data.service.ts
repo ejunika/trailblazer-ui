@@ -39,13 +39,9 @@ export class DataService {
         baseUrl += this.serverConfig.restContext + '/';
       }
     } else {
-      baseUrl = 'https://api.powerbi.com/v1.0/';
+      baseUrl = 'http://localhost:8080/com.trailblazer.api/v1/api/';
     }
     return baseUrl;
-  }
-
-  post(data: any, url: string, urlParams?: string | string[], searchParams?: {}): Observable<any> {
-    return this.http.post<any>(this.buildUrl(url, urlParams, searchParams), data);
   }
 
   buildUrl(url: string, urlParams?: string | string[], searchParams?: {}): string {
@@ -57,7 +53,7 @@ export class DataService {
     if (searchParams) {
       url += '?';
       for (const key in searchParams) {
-        if (searchParams[key]) {
+        if (searchParams[key] != undefined) {
           url += key + '=' + searchParams[key] + '&';
         }
       }
@@ -73,6 +69,18 @@ export class DataService {
 
   get(url: string, urlParams?: string | string[], searchParams?: {}): Observable<any> {
     return this.http.get<any>(this.buildUrl(url, urlParams, searchParams));
+  }
+
+  post(data: any, url: string, urlParams?: string | string[], searchParams?: {}): Observable<any> {
+    return this.http.post<any>(this.buildUrl(url, urlParams, searchParams), data);
+  }
+
+  delete(url: string, urlParams?: string | string[], searchParams?: {}): Observable<any> {
+    return this.http.delete<any>(this.buildUrl(url, urlParams, searchParams));
+  }
+
+  put(data: any, url: string, urlParams?: string | string[], searchParams?: {}): Observable<any> {
+    return this.http.put<any>(this.buildUrl(url, urlParams, searchParams), data);
   }
 
 }

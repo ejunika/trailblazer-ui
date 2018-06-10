@@ -11,13 +11,23 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { DataService } from './data.service';
 import { AuthInterceptorService } from './auth-interceptor.service';
+import { NavComponent } from './nav/nav.component';
+import { MenuListComponent } from './menu-list/menu-list.component';
+import { ToolbarComponent } from './toolbar/toolbar.component';
+import { SidebarNavComponent } from './sidebar-nav/sidebar-nav.component';
+import { SidebarSubNavComponent } from './sidebar-sub-nav/sidebar-sub-nav.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    NavComponent,
+    MenuListComponent,
+    ToolbarComponent,
+    SidebarNavComponent,
+    SidebarSubNavComponent
   ],
   imports: [
     BrowserModule,
