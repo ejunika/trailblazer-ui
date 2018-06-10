@@ -1,0 +1,10 @@
+<ul class="sidebar-menu">
+  <li *ngFor="let sidebarMenu of sideBarMenus">
+    <a href="#">
+      <i class="fa fa-american-sign-language-interpreting"></i>
+      <span>{{sidebarMenu.name}}</span>
+      <i class="fa fa-angle-left pull-right"></i>
+    </a>
+    <app-sidebar-sub-nav *ngIf="sidebarMenu.hasChildren" [sidebarSubMenus]="sidebarMenu.children"></app-sidebar-sub-nav>
+  </li>
+</ul>

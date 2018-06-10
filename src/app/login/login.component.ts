@@ -20,17 +20,20 @@ export class LoginComponent implements OnInit {
   constructor(private router: Router, private dataService: DataService, private cookieService: CookieService) { }
 
   ngOnInit() {
-    this.user = {username: '', emailId: '', password: ''};
-    this.dataService.get('users', '', {
-      offset: 1,
-      limit: 100
-    }).subscribe((res) => {
-      debugger;
-    });
+    this.user = {username: '', emailId: 'akhtar.azaz@google.com', password: 'superadmin'};
   }
 
   doLogin(): void {
-    console.log('[info]: Do login called');
+    this.dataService.post({
+      emailId: this.user.emailId,
+      password: this.user.password
+    }, 'auth', ['login']).subscribe((res) => {
+      if (res.status) {
+        this.cookieService.set('accessToken', res.data[0]);
+        this.router.navigate(['home']);
+      }
+      console.log(res.infoMessage);
+    });
   }
 
   signUp(): void {

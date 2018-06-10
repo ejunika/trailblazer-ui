@@ -1,0 +1,7 @@
+<ol class="breadcrumb">
+  <li *ngFor="let bcItem of bcItems" 
+    class="breadcrumb-item" 
+    [ngClass]="{'active': bcItem.isActive}">
+    {{bcItem.displayName}}
+  </li>
+</ol>
